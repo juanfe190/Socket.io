@@ -3,6 +3,7 @@ var express = require('express'),
     http = require('http');
 var app = express();
 var server = http.createServer(app);
+app.use(express.static(__dirname + '/views'));
 
 //IO IMPLEMENTATION
 var io = require('socket.io').listen(server);
@@ -12,8 +13,7 @@ server.listen(3000);
 app.set('views', __dirname + '/views');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
-//var ioHandler = require('./socket');
-//ioHandler.connectionStart();
+
 
 //ROUTING
 app.get('/', function(request, response){
