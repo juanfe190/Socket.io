@@ -7,13 +7,13 @@ function startConnection(io){
 		io.on('connection', function(socket){
 			console.log('Un usuario se ha conectado');
 			//Nuevo usuario
-			socket.on('newUser', function(user){newUser(user);});
+			socket.on('newUser', (user) => newUser(user));
 			//Envia usuarios a todos
 			sendAllUsers();
 			//Mensaje recibido
-			socket.on('msgToServer', function(data){onMessage(data)});
+			socket.on('msgToServer', (data) => onMessage(data));
 			//Usuario desconectado
-			socket.on('disconnect', function(){onUserDisconnect(socket.user)});	
+			socket.on('disconnect', () => onUserDisconnect(socket.user));	
 
 			function newUser(username){
 				socket.user = username;

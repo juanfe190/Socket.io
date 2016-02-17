@@ -60,8 +60,8 @@
 	* Agregar listeners a componentes
 	*/
 	function addListeners(){
-		$("#btnName").click(function(){createUser();});
-		$("#btnSend").click(function(){sendMessage();});
+		$("#btnName").click( () => createUser());
+		$("#btnSend").click( () => sendMessage());
 	}
  });
 
