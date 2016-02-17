@@ -10,9 +10,9 @@
 	addListeners();
 
 	/**
-	* Esta function recibe un objeto con los
-	* usuarios presentes en el sistema
-	* @param Object de usuarios
+	* Esta function llena el select con los usuarios
+	* activos en el sistema
+	* @param array de usuarios
 	*
 	*/
 	function fillUsers(users){
@@ -23,12 +23,21 @@
 		}
 	}
 
+	/**
+	* Esta function crea el usuario en el server
+	*
+	*/
 	function createUser(){
 		var name = $("#txtName").val();
 		socket.emit('newUser', name);
 		$("#nameArea").hide();
+		$("#nameTitle").html(name);
 	}
 
+	/**
+	* Esta funcion envia un mensaje para que el server
+	* lo maneje
+	*/
 	function sendMessage(){
 		var sendTo = $("#selUsers").val();
 		var message = $("#txtArea").val();
@@ -38,10 +47,18 @@
 		});
 	}
 
+	/**
+	* Esta funcion recibe un mensaje del server
+	*
+	* @param String mensaje
+	*/
 	function onMessage(msg){
 		$("#txtArea").html(msg);
 	}
 
+	/**
+	* Agregar listeners a componentes
+	*/
 	function addListeners(){
 		$("#btnName").click(function(){createUser();});
 		$("#btnSend").click(function(){sendMessage();});
