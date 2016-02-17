@@ -23,17 +23,33 @@ function startConnection(io){
 			}
 		});
 
+		/**
+		* Envia un array con el nombre de todos los usuarios
+		* conectados a todos los usuarios
+		*/
 		function sendAllUsers(){
 			var users = [];
 			for(var user in clients) users.push(user);
 			io.emit('allUsers', users);	
 		}
 
+		/**
+		* Recibe el mensaje del cliente y lo envia a traves del
+		* socket adecuado
+		*
+		* @param Object
+		*/
 		function onMessage(data){
 			var sendToSocket = clients[data.user];
 			sendToSocket.emit('msgToClient', data.message);
 		}
 
+		/**
+		* Funcion al desconectarse un usuario
+		*
+		* @param String usuario desconectado
+		*
+		*/
 		function onUserDisconnect(username){
 			delete clients[username];
 			console.log("El usuario: "+username+" se ha desconectado");
