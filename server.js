@@ -3,9 +3,10 @@ var express = require('express'),
     http = require('http');
 var app = express();
 var server = http.createServer(app);
+//SET ROOT FOLDER
 app.use(express.static(__dirname + '/views'));
 
-//IO IMPLEMENTATION
+//SOCKET.IO IMPLEMENTATION
 var io = require('socket.io').listen(server);
 server.listen(3000);
 
