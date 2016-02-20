@@ -53,15 +53,15 @@
 	* @param String mensaje
 	*/
 	function onMessage(msg){
-		$("#txtArea").html(msg);
+		$("#txtArea").val(msg);
 	}
 
 	/**
 	* Agregar listeners a componentes
 	*/
 	function addListeners(){
-		$("#btnName").click( () => createUser());
-		$("#btnSend").click( () => sendMessage());
+		$("#btnName").click( function(){ createUser() });
+		$("#btnSend").click( function() { sendMessage() });
 	}
  });
 
