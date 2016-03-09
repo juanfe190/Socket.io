@@ -40,8 +40,8 @@ function startConnection(io){
 		* @param Object
 		*/
 		function onMessage(data){
-			var sendToSocket = clients[data.user];
-			sendToSocket.emit('msgToClient', data.message);
+			var sendToSocket = clients[data.userTo];
+			sendToSocket.emit('msgToClient', data);
 		}
 
 		/**
